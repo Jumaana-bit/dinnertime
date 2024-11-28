@@ -126,23 +126,6 @@ class _FoodPageState extends State<FoodPage> {
                 return ListTile(
                   title: Text(item['name']),
                   subtitle: Text('\$${item['cost']}'),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () {
-                          _showEditFoodDialog(context, item);
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          _deleteFoodItem(context, item['id']);
-                        },
-                      ),
-                    ],
-                  ),
                 );
               },
             );
@@ -193,9 +176,7 @@ class _FoodPageState extends State<FoodPage> {
                 final cost = double.tryParse(costController.text) ?? 0.0;
 
                 if (name.isNotEmpty && cost > 0) {
-                  await DatabaseHelper().insertFoodItems([
-                    {'name': name, 'cost': cost},
-                  ]);
+                  await DatabaseHelper().insertFoodItems([{'name': name, 'cost': cost}]);
                   if (Navigator.canPop(context)) {
                     Navigator.pop(context); // Close the dialog
                   }
@@ -206,71 +187,6 @@ class _FoodPageState extends State<FoodPage> {
           ],
         );
       },
-    );
-  }
-
-  // Edit an existing food item
-  void _showEditFoodDialog(BuildContext context, Map<String, dynamic> item) {
-    final nameController = TextEditingController(text: item['name']);
-    final costController = TextEditingController(text: item['cost'].toString());
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Edit Food Item'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(labelText: 'Name'),
-              ),
-              TextField(
-                controller: costController,
-                decoration: const InputDecoration(labelText: 'Cost'),
-                keyboardType: TextInputType.number,
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                if (Navigator.canPop(context)) {
-                  Navigator.pop(context); // Close the dialog
-                }
-              },
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                final name = nameController.text;
-                final cost = double.tryParse(costController.text) ?? 0.0;
-
-                if (name.isNotEmpty && cost > 0) {
-                  await DatabaseHelper().updateFoodItem(item['id'], {
-                    'name': name,
-                    'cost': cost,
-                  });
-                  if (Navigator.canPop(context)) {
-                    Navigator.pop(context); // Close the dialog
-                  }
-                }
-              },
-              child: const Text('Update'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // Delete a food item and refresh the list
-  void _deleteFoodItem(BuildContext context, int id) async {
-    await DatabaseHelper().deleteFoodItem(id);
-    setState(() {}); // Trigger a rebuild to refresh the list
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Food item deleted')),
     );
   }
 }
