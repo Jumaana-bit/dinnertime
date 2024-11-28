@@ -1,0 +1,20 @@
+Pizza,8.5
+Burger,5.0
+Pasta,7.0
+Sushi,10.0
+Salad,4.5
+Sandwich,6.0
+Tacos,6.5
+Steak,15.0
+Fries,3.0
+Chicken Wings,9.0
+Fish,11.0
+Ice Cream,4.0
+Cake,6.5
+Coffee,3.0
+Juice,2.5
+Tea,2.0
+Samosa,1.5
+Noodles,7.5
+Pancake,5.0
+Rice Bowl,8.0
