@@ -8,7 +8,12 @@ The Food Ordering App is a Flutter-based application that allows users to select
 * Interactive UI: Checkbox-based selection for intuitive interaction.
 * Real-time Updates: Automatic updates to the selection list and total cost.
 
+## Getting Started
 
+### Prequisites
+* Flutter SDK: Install the latest version of Flutter from the official website.
+* Dart: Ensure Dart is included with your Flutter installation.
+* Database: Configure a local or remote database with food item data.
 
 A few resources to get you started if this is your first Flutter project:
 
