@@ -15,6 +15,24 @@ The Food Ordering App is a Flutter-based application that allows users to select
 * Dart: Ensure Dart is included with your Flutter installation.
 * Database: Configure a local or remote database with food item data.
 
+### Installation
+1. Clone the repository:
+```
+git clone https://github.com/Jumaana-bit/dinnertime.git
+```
+2. Navigate to the project directory:
+```
+cd dinnertime
+```
+3. Install dependencies:
+```
+flutter pub get
+```
+4. Run the app:
+```
+flutter run
+```
+
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
